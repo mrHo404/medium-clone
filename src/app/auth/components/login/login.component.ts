@@ -5,27 +5,26 @@ import {Observable, Subscription} from 'rxjs'
 import {tap} from 'rxjs/operators'
 
 import {AppStateInterface, BackendErrorsInterface} from '../../../shared/types'
-import {registerAction, resetValidationErrors} from '../../store/actions'
+import {loginAction, resetValidationErrors} from '../../store/actions'
 import {
   isSubmittingSelector,
   validationErrorsSelector,
 } from '../../store/selectors'
-import {RegisterRequestInterface} from '../../types'
+import {LoginRequestInterface} from '../../types'
 
 @Component({
-  selector: 'mc-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['register.component.scss'],
+  selector: 'mc-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['login.component.scss'],
 })
-export class RegisterComponent implements OnDestroy {
+export class LoginComponent implements OnDestroy {
   constructor(
     private formBuilder: FormBuilder,
     private store: Store<AppStateInterface>
   ) {}
 
-  registrationForm: FormGroup = this.formBuilder.group({
-    username: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9 ]*')]],
-    email: ['', [Validators.email, Validators.required]],
+  loginForm: FormGroup = this.formBuilder.group({
+    email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]],
   })
 
@@ -43,12 +42,13 @@ export class RegisterComponent implements OnDestroy {
     this.resetSubscription?.unsubscribe()
   }
   onSubmit(): void {
-    const request: RegisterRequestInterface = {
-      user: this.registrationForm.value,
+    const request: LoginRequestInterface = {
+      user: this.loginForm.value,
     }
 
-    this.store.dispatch(registerAction({request}))
+    this.store.dispatch(loginAction({request}))
   }
+
   resetValidationErrors(): void {
     this.resetSubscription = this.backendErrors$.subscribe((errors) => {
       if (errors) {
