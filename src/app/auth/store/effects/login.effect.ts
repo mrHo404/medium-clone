@@ -8,11 +8,7 @@ import {catchError, map, switchMap, tap} from 'rxjs/operators'
 import {PersistanceService} from '../../../shared/services'
 import {CurrentUserInterface} from '../../../shared/types'
 import {AuthService} from '../../services'
-import {
-  loginAction,
-  loginFailureAction,
-  loginSuccessAction,
-} from '../actions/login.action'
+import {loginAction, loginFailureAction, loginSuccessAction} from '../actions'
 
 @Injectable()
 export class LoginEffect {

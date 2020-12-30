@@ -12,7 +12,7 @@ import {
   registerAction,
   registerFailureAction,
   registerSuccessAction,
-} from '../actions/register.action'
+} from '../actions'
 
 @Injectable()
 export class RegisterEffect {

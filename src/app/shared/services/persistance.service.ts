@@ -13,8 +13,7 @@ export class PersistanceService {
   get(key: string): any {
     const storedData = localStorage.getItem(key)
 
-    return storedData
-      ? JSON.parse(storedData)
-      : console.error(`Error getting data for: ${key} from persistence`)
+    return storedData ? JSON.parse(storedData) : undefined
+    // : console.error(`Getting ${key} from persistence failed`)
   }
 }

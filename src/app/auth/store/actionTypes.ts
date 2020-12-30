@@ -8,4 +8,8 @@ export enum ActionTypes {
   LOGIN_FAILURE = '[Auth] Login failure',
 
   RESET_VALIDATION_ERRORS = '[Auth] Reset validation errors',
+
+  GET_USER = '[Auth] Get current user',
+  GET_USER_SUCCESS = '[Auth] Get current user success',
+  GET_USER_FAILURE = '[Auth] Get current user failure',
 }
