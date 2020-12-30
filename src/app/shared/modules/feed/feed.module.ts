@@ -4,15 +4,18 @@ import {RouterModule} from '@angular/router'
 import {EffectsModule} from '@ngrx/effects'
 import {StoreModule} from '@ngrx/store'
 
+import {ErrorMessageModule} from '../errorMessage/errorMessage.module'
+import {LoadingModule} from '../loading/loading.module'
 import {FeedComponent} from './components/feed/feed.component'
 import {FeedService} from './services'
 import {GetFeedEffect} from './store/effects'
 import {reducers} from './store/reducers'
-
 @NgModule({
   imports: [
     CommonModule,
     EffectsModule.forFeature([GetFeedEffect]),
+    ErrorMessageModule,
+    LoadingModule,
     RouterModule,
     StoreModule.forFeature('feed', reducers),
   ],

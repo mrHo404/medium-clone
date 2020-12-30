@@ -1,1 +1,6 @@
 export * from './backendErrorMessages/backendErrorMessages.module'
+export * from './banner/banner.module'
+export * from './feed/feed.module'
+export * from './header/header.module'
+export * from './errorMessage/errorMessage.module'
+export * from './loading/loading.module'
