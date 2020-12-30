@@ -11,6 +11,7 @@ import {AuthModule} from './auth/auth.module'
 import {environment} from 'src/environments/environment'
 import {HeaderModule} from './shared/modules/header/header.module'
 import {AuthInterceptor, PersistanceService} from './shared/services'
+import {GlobalFeedModule} from './globalFeed/globalFeed.module'
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +20,7 @@ import {AuthInterceptor, PersistanceService} from './shared/services'
     AppRoutingModule,
     AuthModule,
     EffectsModule.forRoot([]),
+    GlobalFeedModule,
     HeaderModule,
     HttpClientModule,
     StoreModule.forRoot({}),
