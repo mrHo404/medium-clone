@@ -1,4 +1,4 @@
-import {ProfileInterface} from 'src/app/shared/types'
+import {PopularTagType, ProfileInterface} from 'src/app/shared/types'
 
 export interface ArticlesInterface {
   title: string
@@ -6,7 +6,7 @@ export interface ArticlesInterface {
   body: string
   createdAt: string
   updatedAt: string
-  taglist: string[]
+  tagList: PopularTagType[]
   description: string
   author: ProfileInterface
   favourited: boolean

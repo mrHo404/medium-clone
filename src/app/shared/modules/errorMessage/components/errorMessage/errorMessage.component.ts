@@ -1,9 +1,16 @@
-import {Component, Input} from '@angular/core'
+import {Component, Input, OnInit} from '@angular/core'
 
 @Component({
   selector: 'mc-error-message',
-  template: '<div>{{messageProps}}</div>',
+  template: '<div>{{message}}</div>',
 })
-export class ErrorMessageComponent {
-  @Input('message') messageProps: string = 'Oops, something went wrong'
+export class ErrorMessageComponent implements OnInit {
+  @Input('message') messageProps: string | undefined | null
+  message: string = ''
+
+  ngOnInit(): void {
+    this.message = this.messageProps
+      ? this.messageProps
+      : 'Oops, something went wrong'
+  }
 }
