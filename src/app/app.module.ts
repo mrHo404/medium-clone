@@ -13,6 +13,8 @@ import {environment} from 'src/environments/environment'
 import {HeaderModule} from './shared/modules'
 import {AuthInterceptor, PersistanceService} from './shared/services'
 import {GlobalFeedModule} from './globalFeed/globalFeed.module'
+import {YourFeedFeedModule} from './yourFeed/yourFeed.module'
+import {TagFeedModule} from './tagFeed/tagFeed.module'
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,6 +32,8 @@ import {GlobalFeedModule} from './globalFeed/globalFeed.module'
       maxAge: 25,
       logOnly: environment.production,
     }),
+    TagFeedModule,
+    YourFeedFeedModule,
   ],
   providers: [
     PersistanceService,

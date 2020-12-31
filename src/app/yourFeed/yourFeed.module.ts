@@ -5,12 +5,12 @@ import {RouterModule, Routes} from '@angular/router'
 import {BannerModule, FeedModule} from '../shared/modules'
 import {FeedTabsModule} from '../shared/modules/feedTabs/feedTabs.module'
 import {PopularTagsModule} from '../shared/modules/popularTags/popularTags.module'
-import {GlobalFeedComponent} from './components/globalFeed/globalFeed.component'
+import {YourFeedComponent} from './components/yourFeed/yourFeed.component'
 
 const routes: Routes = [
   {
-    path: '',
-    component: GlobalFeedComponent,
+    path: 'feed',
+    component: YourFeedComponent,
   },
 ]
 @NgModule({
@@ -22,6 +22,6 @@ const routes: Routes = [
     FeedTabsModule,
     RouterModule.forChild(routes),
   ],
-  declarations: [GlobalFeedComponent],
+  declarations: [YourFeedComponent],
 })
-export class GlobalFeedModule {}
+export class YourFeedFeedModule {}

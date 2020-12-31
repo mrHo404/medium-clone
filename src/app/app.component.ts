@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core'
+import {ActivatedRoute} from '@angular/router'
 import {Store} from '@ngrx/store'
 import {getCurrentUserAction} from './auth/store/actions'
 
@@ -8,9 +9,13 @@ import {getCurrentUserAction} from './auth/store/actions'
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(private store: Store) {}
+  constructor(private store: Store, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    console.log(
+      'HERE',
+      this.route.url.subscribe(() => console.log)
+    )
     this.store.dispatch(getCurrentUserAction())
   }
 }
