@@ -12,10 +12,6 @@ export class AppComponent implements OnInit {
   constructor(private store: Store, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    console.log(
-      'HERE',
-      this.route.url.subscribe(() => console.log)
-    )
     this.store.dispatch(getCurrentUserAction())
   }
 }

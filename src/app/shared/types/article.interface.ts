@@ -1,6 +1,6 @@
 import {PopularTagType, ProfileInterface} from 'src/app/shared/types'
 
-export interface ArticlesInterface {
+export interface ArticleInterface {
   title: string
   slug: string
   body: string

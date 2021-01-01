@@ -8,6 +8,7 @@ import {routerReducer, StoreRouterConnectingModule} from '@ngrx/router-store'
 
 import {AppRoutingModule} from './app-routing.module'
 import {AppComponent} from './app.component'
+import {ArticleModule} from './article/article.module'
 import {AuthModule} from './auth/auth.module'
 import {environment} from 'src/environments/environment'
 import {HeaderModule} from './shared/modules'
@@ -22,6 +23,7 @@ import {TagFeedModule} from './tagFeed/tagFeed.module'
     BrowserModule,
     AppRoutingModule,
     AuthModule,
+    ArticleModule,
     EffectsModule.forRoot([]),
     GlobalFeedModule,
     HeaderModule,
