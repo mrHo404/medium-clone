@@ -2,7 +2,6 @@ import {Component, OnDestroy} from '@angular/core'
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {select, Store} from '@ngrx/store'
 import {Observable, Subscription} from 'rxjs'
-import {tap} from 'rxjs/operators'
 
 import {AppStateInterface, BackendErrorsInterface} from '../../../shared/types'
 import {loginAction, resetValidationErrors} from '../../store/actions'

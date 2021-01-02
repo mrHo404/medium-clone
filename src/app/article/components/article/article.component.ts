@@ -2,7 +2,7 @@ import {Component, Input, OnDestroy, OnInit} from '@angular/core'
 import {ActivatedRoute} from '@angular/router'
 import {select, Store} from '@ngrx/store'
 import {combineLatest, Observable, Subscription} from 'rxjs'
-import {map} from 'rxjs/operators'
+import {filter, map} from 'rxjs/operators'
 
 import {
   errorSelector,
@@ -14,7 +14,7 @@ import {
   ArticleInterface,
   CurrentUserInterface,
 } from '../../../shared/types'
-import {getArticleAction} from '../../store/actions'
+import {deleteArticleAction, getArticleAction} from '../../store/actions'
 import {currentUserSelector} from 'src/app/auth/store/selectors'
 
 @Component({
@@ -34,11 +34,9 @@ export class ArticleComponent implements OnInit, OnDestroy {
 
   // manual subscription used so that template doesnt need the async pipe for each article attribute
   articleSubscription: Subscription = this.store
-    .pipe(select(articleSelector))
-    .subscribe((article: ArticleInterface | null | undefined) => {
-      if (article) {
-        this.article = article
-      }
+    .pipe(select(articleSelector), filter(Boolean))
+    .subscribe((article) => {
+      this.article = article as ArticleInterface
     })
   error$: Observable<string | undefined | null> = this.store.pipe(
     select(errorSelector)
@@ -53,9 +51,6 @@ export class ArticleComponent implements OnInit, OnDestroy {
         ArticleInterface | null | undefined,
         CurrentUserInterface | null | undefined
       ]) => {
-        // if (!article || !currentUser) {
-        //   return false
-        // }
         return article?.author.username === currentUser?.username
       }
     )
@@ -63,10 +58,15 @@ export class ArticleComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.fetchData()
-    this.articleSubscription
   }
   ngOnDestroy(): void {
     this.articleSubscription.unsubscribe()
+  }
+
+  deleteArticle(): void {
+    if (this.slug) {
+      this.store.dispatch(deleteArticleAction({slug: this.slug}))
+    }
   }
 
   private fetchData(): void {

@@ -16,6 +16,8 @@ import {AuthInterceptor, PersistanceService} from './shared/services'
 import {GlobalFeedModule} from './globalFeed/globalFeed.module'
 import {YourFeedFeedModule} from './yourFeed/yourFeed.module'
 import {TagFeedModule} from './tagFeed/tagFeed.module'
+import {CreateArticleModule} from './createArticle/createArticle.module'
+import {EditArticleModule} from './editArticle/editArticle.module'
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +25,8 @@ import {TagFeedModule} from './tagFeed/tagFeed.module'
     BrowserModule,
     AppRoutingModule,
     AuthModule,
-    ArticleModule,
+    CreateArticleModule,
+    EditArticleModule,
     EffectsModule.forRoot([]),
     GlobalFeedModule,
     HeaderModule,
@@ -36,6 +39,8 @@ import {TagFeedModule} from './tagFeed/tagFeed.module'
     }),
     TagFeedModule,
     YourFeedFeedModule,
+    //articleModule needs to be imported after createArticleModule as route "new" is also a slug
+    ArticleModule,
   ],
   providers: [
     PersistanceService,

@@ -9,9 +9,10 @@ import {
   LoadingModule,
   TagListModule,
 } from '../shared/modules'
-import {ArticleService} from '../shared/services'
+import {ArticleService as SharedArticleService} from '../shared/services'
 import {ArticleComponent} from './components/article/article.component'
-import {GetArticleEffect} from './store/effects'
+import {ArticleService} from './services'
+import {DeleteArticleEffect, GetArticleEffect} from './store/effects'
 import {reducers} from './store/reducers'
 
 const routes: Routes = [
@@ -23,7 +24,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    EffectsModule.forFeature([GetArticleEffect]),
+    EffectsModule.forFeature([GetArticleEffect, DeleteArticleEffect]),
     ErrorMessageModule,
     LoadingModule,
     RouterModule.forChild(routes),
@@ -31,6 +32,6 @@ const routes: Routes = [
     TagListModule,
   ],
   declarations: [ArticleComponent],
-  providers: [ArticleService],
+  providers: [ArticleService, SharedArticleService],
 })
 export class ArticleModule {}

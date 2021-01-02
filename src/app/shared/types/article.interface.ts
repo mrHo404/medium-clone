@@ -1,13 +1,10 @@
-import {PopularTagType, ProfileInterface} from 'src/app/shared/types'
+import {ProfileInterface} from 'src/app/shared/types'
+import {ArticleInputInterface} from './articeInput.interface'
 
-export interface ArticleInterface {
-  title: string
+export interface ArticleInterface extends ArticleInputInterface {
   slug: string
-  body: string
   createdAt: string
   updatedAt: string
-  tagList: PopularTagType[]
-  description: string
   author: ProfileInterface
   favourited: boolean
   favoritesCount: number
